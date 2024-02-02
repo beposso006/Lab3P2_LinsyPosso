@@ -45,6 +45,9 @@ public class Lab3P2_LinsyPosso {
                 case 3:
                     listarPokemon();
                     break;
+
+                case 4:
+                    break;
             }
 
         }
@@ -189,6 +192,40 @@ public class Lab3P2_LinsyPosso {
                     }
                     listar = false;
                     break;
+
+                case 3:
+                    boolean grass = false;
+                    for (Pokemon pok : listaPokemon) {
+                        if (pok instanceof GrassType) {
+                            System.out.println(pok.toString());
+                            System.out.println("Habitat: " + ((GrassType) pok).habitat);
+                            System.out.println("Dominio sobre las plantas: " + ((GrassType) pok).dominoPlantas);
+                            System.out.println("------------------------------------------------------------------");
+                            grass = true;
+                        }
+                    }
+                    if (!grass) {
+                        System.out.println("No hay Pokemon Tipo planta en la lista");
+                    }
+                    listar = false;
+                    break;
+            }
+        }
+    }
+
+    public static void eliminarPokemon() {
+        boolean listar = true;
+        while (listar) {
+            System.out.println("--Eliminar por Tipo--");
+            System.out.println("Opciones...");
+            System.out.println("1. Fire Type");
+            System.out.println("2. Water Type");
+            System.out.println("3. Grass Type");
+            System.out.print("Ingrese la opcion que desea listar: ");
+            int opPokemon = Leer.nextInt();
+            switch (opPokemon) {
+                case 1:
+
             }
         }
     }

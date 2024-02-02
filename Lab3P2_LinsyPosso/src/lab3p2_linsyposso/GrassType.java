@@ -9,8 +9,8 @@ package lab3p2_linsyposso;
  * @author 29164
  */
 public class GrassType extends Pokemon {
-    private String habitat;
-    private int dominoPlantas;
+    public String habitat;
+    public int dominoPlantas;
 
     public GrassType(String nombre, int numPokedex, String naturaleza, String habitat, int dominioPlanta) {
         super(nombre, numPokedex, naturaleza);
