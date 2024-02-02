@@ -34,12 +34,20 @@ public class Lab3P2_LinsyPosso {
             System.out.print("Ingrese una opcion: ");
             int opcion = Leer.nextInt();
             switch (opcion) {
-                case 1: {
+                case 1:
                     crearPokemon();
-                }
+                    break;
 
+                case 2:
+                    crearPokebola();
+                    break;
+                    
+                case 3:
+                    
             }
+
         }
+
     }
 
     public static void crearPokemon() {
@@ -67,6 +75,7 @@ public class Lab3P2_LinsyPosso {
                     System.out.print("Ingrese la potencia de llamas del Pokemon: ");
                     int potencia = Leer.nextInt();
                     Pokemon nuevoPokemon = new FireType(nombre, numE, natu, potencia);
+                    System.out.println("Pokemon creado");
                     seguir = false;
                     break;
 
@@ -86,6 +95,7 @@ public class Lab3P2_LinsyPosso {
                     System.out.print("Ingrese la rapidez al nadar del Pokemon: ");
                     int nadar = Leer.nextInt();
                     nuevoPokemon = new WaterType(nombreW, numEW, natuW, vidaAgua, nadar);
+                    System.out.println("Pokemon creado");
                     seguir = false;
                     break;
 
@@ -108,6 +118,7 @@ public class Lab3P2_LinsyPosso {
                         System.out.println("El dominio sobre las plantas debe estar en un rango de 1 a 100. Inténtalo de nuevo.");
                     }
                     nuevoPokemon = new GrassType(nombreG, numEG, natuG, habitat, dominio);
+                    System.out.println("Pokemon creado");
                     seguir = false;
                     break;
             }
@@ -115,6 +126,22 @@ public class Lab3P2_LinsyPosso {
     }
 
     public static void crearPokebola() {
-
+        System.out.println("--Crear Pokebola--");
+        System.out.print("Ingrese el color de su Pokebola:");
+        String color = Leer.next();
+        System.out.print("Ingrese el numero de serie: ");
+        int numSerie = Leer.nextInt();
+        System.out.print("Ingrese la eficiencia de atrapado de la Pokebola (1-3): ");
+        int atrapado = Leer.nextInt();
+        if (atrapado < 1 || atrapado > 3) {
+            System.out.println("La eficiencia de atrapado debe estar en un rango de 1 a 3. Pokebola no creada.");
+        }else{
+            Pokeball nuevaPokebola = new Pokeball(color, numSerie, atrapado);
+            System.out.println("Pokebola creada");
+        }
+    }
+    
+    public static void listarPokemon(){
+        
     }
 }
