@@ -15,7 +15,7 @@ public class Pokemon {
     private boolean atrapado;
     Pokeball pokebola;
 
-    public Pokemon(String nombre, int numPokedex, String naturaleza, boolean atrapado, Pokeball pokebola) {
+    public Pokemon(String nombre, int numPokedex, String naturaleza) {
         this.nombre = nombre;
         this.numPokedex = numPokedex;
         this.naturaleza = naturaleza;

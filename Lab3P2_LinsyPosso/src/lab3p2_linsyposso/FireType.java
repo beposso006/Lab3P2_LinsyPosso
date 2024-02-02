@@ -10,5 +10,11 @@ package lab3p2_linsyposso;
  */
 public class FireType extends Pokemon {
     private int potenciaLlamas;
+
+    public FireType(String nombre, int numPokedex, String naturaleza, int potenciaLlamas) {
+        super(nombre, numPokedex, naturaleza);
+        this.potenciaLlamas = potenciaLlamas;
+    }
+    
     
 }

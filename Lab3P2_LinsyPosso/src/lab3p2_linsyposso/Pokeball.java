@@ -12,4 +12,12 @@ public class Pokeball {
     private String color;
     private int numserie;
     private int eficienciaAtrapando;
+
+    public Pokeball(String color, int numserie, int eficienciaAtrapando) {
+        this.color = color;
+        this.numserie = numserie;
+        this.eficienciaAtrapando = eficienciaAtrapando;
+    }
+    
+    
 }
