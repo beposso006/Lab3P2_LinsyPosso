@@ -22,6 +22,11 @@ public class Pokemon {
         this.atrapado = false;
         this.pokebola = null;
     }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" + "nombre=" + nombre + ", numPokedex=" + numPokedex + ", naturaleza=" + naturaleza + ", atrapado=" + atrapado + '}';
+    }
     
     
 }

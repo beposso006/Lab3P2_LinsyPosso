@@ -41,9 +41,10 @@ public class Lab3P2_LinsyPosso {
                 case 2:
                     crearPokebola();
                     break;
-                    
+
                 case 3:
-                    
+                    listarPokemon();
+                    break;
             }
 
         }
@@ -75,6 +76,7 @@ public class Lab3P2_LinsyPosso {
                     System.out.print("Ingrese la potencia de llamas del Pokemon: ");
                     int potencia = Leer.nextInt();
                     Pokemon nuevoPokemon = new FireType(nombre, numE, natu, potencia);
+                    listaPokemon.add(nuevoPokemon);
                     System.out.println("Pokemon creado");
                     seguir = false;
                     break;
@@ -95,6 +97,7 @@ public class Lab3P2_LinsyPosso {
                     System.out.print("Ingrese la rapidez al nadar del Pokemon: ");
                     int nadar = Leer.nextInt();
                     nuevoPokemon = new WaterType(nombreW, numEW, natuW, vidaAgua, nadar);
+                    listaPokemon.add(nuevoPokemon);
                     System.out.println("Pokemon creado");
                     seguir = false;
                     break;
@@ -118,6 +121,7 @@ public class Lab3P2_LinsyPosso {
                         System.out.println("El dominio sobre las plantas debe estar en un rango de 1 a 100. Inténtalo de nuevo.");
                     }
                     nuevoPokemon = new GrassType(nombreG, numEG, natuG, habitat, dominio);
+                    listaPokemon.add(nuevoPokemon);
                     System.out.println("Pokemon creado");
                     seguir = false;
                     break;
@@ -135,13 +139,57 @@ public class Lab3P2_LinsyPosso {
         int atrapado = Leer.nextInt();
         if (atrapado < 1 || atrapado > 3) {
             System.out.println("La eficiencia de atrapado debe estar en un rango de 1 a 3. Pokebola no creada.");
-        }else{
+        } else {
             Pokeball nuevaPokebola = new Pokeball(color, numSerie, atrapado);
+            listaPokebolas.add(nuevaPokebola);
             System.out.println("Pokebola creada");
         }
     }
-    
-    public static void listarPokemon(){
-        
+
+    public static void listarPokemon() {
+        boolean listar = true;
+        while (listar) {
+            System.out.println("--Listar por Tipo--");
+            System.out.println("Opciones...");
+            System.out.println("1. Fire Type");
+            System.out.println("2. Water Type");
+            System.out.println("3. Grass Type");
+            System.out.print("Ingrese la opcion que desea listar: ");
+            int opPokemon = Leer.nextInt();
+            switch (opPokemon) {
+                case 1:
+                    boolean fire = false;
+                    for (Pokemon pok : listaPokemon) {
+                        if (pok instanceof FireType) {
+                            System.out.println(pok.toString());
+                            System.out.println("Potencia de llamas: " + ((FireType) pok).potenciaLlamas);
+                            System.out.println("------------------------------------------------------------------");
+                            fire = true;
+                        }
+                    }
+                    if (!fire) {
+                        System.out.println("No hay Pokemon Tipo fuego en la lista");
+                    }
+                    listar = false;
+                    break;
+
+                case 2:
+                    boolean water = false;
+                    for (Pokemon pok : listaPokemon) {
+                        if (pok instanceof WaterType) {
+                            System.out.println(pok.toString());
+                            System.out.println("Vive fuera del agua?: " + ((WaterType) pok).vidaEnAgua);
+                            System.out.println("Rapidez al nadar: " + ((WaterType) pok).rapidezNado);
+                            System.out.println("------------------------------------------------------------------");
+                            water = true;
+                        }
+                    }
+                    if (!water) {
+                        System.out.println("No hay Pokemon Tipo agua en la lista");
+                    }
+                    listar = false;
+                    break;
+            }
+        }
     }
 }
