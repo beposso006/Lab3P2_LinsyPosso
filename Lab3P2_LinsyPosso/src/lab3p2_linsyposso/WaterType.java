@@ -9,8 +9,8 @@ package lab3p2_linsyposso;
  * @author 29164
  */
 public class WaterType extends Pokemon {
-    public boolean vidaEnAgua;
-    public int rapidezNado;
+    protected boolean vidaEnAgua;
+    protected int rapidezNado;
 
     public WaterType(String nombre, int numPokedex, String naturaleza, boolean vidaEnAgua, int rapidezNado) {
         super(nombre, numPokedex, naturaleza); 

@@ -23,6 +23,16 @@ public class Pokemon {
         this.pokebola = null;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Pokemon{" + "nombre=" + nombre + ", numPokedex=" + numPokedex + ", naturaleza=" + naturaleza + ", atrapado=" + atrapado + '}';

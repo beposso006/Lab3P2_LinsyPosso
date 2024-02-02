@@ -47,6 +47,7 @@ public class Lab3P2_LinsyPosso {
                     break;
 
                 case 4:
+                    eliminarPokemon();
                     break;
             }
 
@@ -214,8 +215,8 @@ public class Lab3P2_LinsyPosso {
     }
 
     public static void eliminarPokemon() {
-        boolean listar = true;
-        while (listar) {
+        boolean eliminar = true;
+        while (eliminar) {
             System.out.println("--Eliminar por Tipo--");
             System.out.println("Opciones...");
             System.out.println("1. Fire Type");
@@ -225,6 +226,79 @@ public class Lab3P2_LinsyPosso {
             int opPokemon = Leer.nextInt();
             switch (opPokemon) {
                 case 1:
+                    boolean fire = false;
+                    for (int i = 0; i < listaPokemon.size(); i++) {
+                        Pokemon pok = listaPokemon.get(i);
+                        if (pok instanceof FireType) {
+                            System.out.println((i) + ". " + pok.getNombre());
+                            fire = true;
+                        }
+                    }
+
+                    if (!fire) {
+                        System.out.println("No hay Pokemon Tipo fuego en la lista");
+                        eliminar = false;
+                    }
+                    System.out.print("Seleccione el indice del Pokemon que desa eliminar: ");
+                    int indexF = Leer.nextInt();
+                    if (indexF >= 0 && indexF <= listaPokemon.size()) {
+                        Pokemon pokE = listaPokemon.remove(indexF);
+                        System.out.println("Pokemon eliminado...");
+                    } else {
+                        System.out.println("Indice invalido");
+                    }
+                    eliminar = false;
+                    break;
+
+                case 2:
+                    boolean water = false;
+                    for (int i = 0; i < listaPokemon.size(); i++) {
+                        Pokemon pok = listaPokemon.get(i);
+                        if (pok instanceof WaterType) {
+                            System.out.println((i) + ". " + pok.getNombre());
+                            water = true;
+                        }
+                    }
+
+                    if (!water) {
+                        System.out.println("No hay Pokemon Tipo fuego en la lista");
+                        eliminar = false;
+                    }
+                    System.out.print("Seleccione el indice del Pokemon que desa eliminar: ");
+                    int indexW = Leer.nextInt();
+                    if (indexW >= 0 && indexW <= listaPokemon.size()) {
+                        Pokemon pokE = listaPokemon.remove(indexW);
+                        System.out.println("Pokemon eliminado...");
+                    } else {
+                        System.out.println("Indice invalido");
+                    }
+                    eliminar = false;
+                    break;
+
+                case 3:
+                    boolean grass = false;
+                    for (int i = 0; i < listaPokemon.size(); i++) {
+                        Pokemon pok = listaPokemon.get(i);
+                        if (pok instanceof GrassType) {
+                            System.out.println((i) + ". " + pok.getNombre());
+                            grass = true;
+                        }
+                    }
+
+                    if (!grass) {
+                        System.out.println("No hay Pokemon Tipo fuego en la lista");
+                        eliminar = false;
+                    }
+                    System.out.print("Seleccione el indice del Pokemon que desa eliminar: ");
+                    int indexG = Leer.nextInt();
+                    if (indexG >= 0 && indexG <= listaPokemon.size()) {
+                        Pokemon pokE = listaPokemon.remove(indexG);
+                        System.out.println("Pokemon eliminado...");
+                    } else {
+                        System.out.println("Indice invalido");
+                    }
+                    eliminar = false;
+                    break;
 
             }
         }
