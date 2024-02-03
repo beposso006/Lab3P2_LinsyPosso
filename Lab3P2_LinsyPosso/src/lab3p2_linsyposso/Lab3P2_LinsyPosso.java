@@ -358,9 +358,15 @@ public class Lab3P2_LinsyPosso {
                 System.out.println("Error...");
             }
             if (rand.nextInt(100) < chance) {
-                
+                aparecio.atrapado = true;
+                System.out.println("Has capturado a " + aparecio.getNombre());   
+            }else{
+                System.out.println("No se pudo capturar a " + aparecio.getNombre()
+                + ". La Pokebola se perdio");
             }
-                
+            listaPokebolas.remove(choosePB);   
+        }else{
+            System.out.println("Has huido...");
         }
     }
 }
