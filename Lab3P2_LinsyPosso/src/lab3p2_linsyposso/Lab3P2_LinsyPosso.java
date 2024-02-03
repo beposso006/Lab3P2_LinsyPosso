@@ -50,10 +50,13 @@ public class Lab3P2_LinsyPosso {
                 case 4:
                     eliminarPokemon();
                     break;
-                    
+
                 case 5:
                     capturaPokemon();
                     break;
+
+                case 6:
+                    modificaPokemon();
             }
 
         }
@@ -307,30 +310,30 @@ public class Lab3P2_LinsyPosso {
             }
         }
     }
-    
-    public static void capturaPokemon(){
+
+    public static void capturaPokemon() {
         System.out.println("--Capturar Pokemon--");
-        if (listaPokebolas.size()==0) {
+        if (listaPokebolas.size() == 0) {
             System.out.println("No hay Pokebolas disponibles...");
         }
         System.out.print("Elija una Pokebola: ");
         for (int i = 0; i < listaPokebolas.size(); i++) {
             Pokeball pokeB = listaPokebolas.get(i);
-            System.out.println((i) + ". " + pokeB.getColor() + " - Numero de Serie: " + pokeB.getNumserie());            
+            System.out.println((i) + ". " + pokeB.getColor() + " - Numero de Serie: " + pokeB.getNumserie());
         }
         System.out.print("Seleccione el indice de la Pokebola que desea: ");
         int pokeball = Leer.nextInt();
         if (pokeball < 0 || pokeball > listaPokebolas.size()) {
             System.out.println("Opcion invalida");
         }
-        
+
         Pokeball choosePB = listaPokebolas.get(pokeball);
         boolean captura = false;
         for (Pokemon pokemon : listaPokemon) {
             if (!pokemon.atrapado) {
                 captura = true;
                 break;
-            }   
+            }
         }
         if (!captura) {
             System.out.println("No hay pokemon disponibles");
@@ -350,27 +353,130 @@ public class Lab3P2_LinsyPosso {
             int chance = 0;
             if (choosePB.getEficienciaAtrapando() == 3) {
                 chance = 100;
-            }else if (choosePB.getEficienciaAtrapando() == 2){
+            } else if (choosePB.getEficienciaAtrapando() == 2) {
                 chance = 67;
-            }else if (choosePB.getEficienciaAtrapando() == 1){
+            } else if (choosePB.getEficienciaAtrapando() == 1) {
                 chance = 33;
-            }else{
+            } else {
                 System.out.println("Error...");
             }
             if (rand.nextInt(100) < chance) {
                 aparecio.atrapado = true;
-                System.out.println("Has capturado a " + aparecio.getNombre());   
-            }else{
+                System.out.println("Has capturado a " + aparecio.getNombre());
+            } else {
                 System.out.println("No se pudo capturar a " + aparecio.getNombre()
-                + ". La Pokebola se perdio");
+                        + ". La Pokebola se perdio");
             }
-            listaPokebolas.remove(choosePB);   
-        }else{
+            listaPokebolas.remove(choosePB);
+        } else {
             System.out.println("Has huido...");
         }
     }
-    
-    public static void modificaPokemon(){
-        
+
+    public static void modificaPokemon() {
+        System.out.println("--Modificar Pokemon--");
+        boolean atrapado = false;
+        for (Pokemon p : listaPokemon) {
+            if (p.atrapado) {
+                atrapado = true;
+                break;
+            }
+        }
+        if (!atrapado) {
+            System.out.println("No hay pokemon atrapados");
+            return;
+        }
+        System.out.println("Seleccione el tipo a Modificar");
+        System.out.println("1. Fire Type");
+        System.out.println("2. Water Type");
+        System.out.println("3. Grass Type");
+        System.out.print("Ingrese una opcion: ");
+        int tipoPK = Leer.nextInt();
+        boolean existeTipo = false;
+        for (Pokemon pok : listaPokemon) {
+            if (pok.atrapado) {
+                switch (tipoPK) {
+                    case 1:
+                        if (pok instanceof FireType) {
+                            existeTipo = true;
+                        }
+                        break;
+
+                    case 2:
+                        if (pok instanceof WaterType) {
+                            existeTipo = true;
+                        }
+                        break;
+
+                    case 3:
+                        if (pok instanceof GrassType) {
+                            existeTipo = true;
+                        }
+                        break;
+                }
+                break;
+            }
+            if (!existeTipo) {
+                System.out.println("No hay ese tipo de Pokemon");
+                return;
+            }
+            System.out.print("Seleccione el Pokemon que desea modificar: ");
+            for (int i = 0; i < listaPokemon.size(); i++) {
+                Pokemon poke = listaPokemon.get(i);
+                if (pok.atrapado) {
+                    switch (tipoPK) {
+                        case 1:
+                            if (poke instanceof FireType) {
+                                System.out.println((i) + ". " + poke.getNombre());
+                            }
+                            break;
+
+                        case 2:
+                            if (poke instanceof WaterType) {
+                                System.out.println((i) + ". " + poke.getNombre());
+                            }
+                            break;
+
+                        case 3:
+                            if (poke instanceof GrassType) {
+                                System.out.println((i) + ". " + poke.getNombre());
+                            }
+                            break;
+                    }
+                }
+            }
+            
+            System.out.print("Ingrese el indice: ");
+            int ops = Leer.nextInt();
+            if (ops < 0 || ops > listaPokemon.size()) {
+                System.out.println("Opcion invalida");
+                return;
+            }
+            Pokemon modificacion = listaPokemon.get(ops);
+            System.out.print("Seleccione el atributo a modificar: ");
+            System.out.println("1. Nombre");
+            System.out.println("2. Numero de entrada en la Pokedex");
+            if (modificacion instanceof FireType) {
+                System.out.println("3. Potencia de llamas");
+            }else if (modificacion instanceof WaterType){
+                System.out.println("3. Puede vivir en el agua?");
+            }else if (modificacion instanceof GrassType){
+                System.out.println("3. Habitat");
+            }
+            System.out.println("Ingrese el numero del atributo: ");
+            int atributo = Leer.nextInt();
+            switch(atributo){
+                case 1:
+                    System.out.println("Ingrese el nuevo nombre: ");
+                    String nombre = Leer.next();
+                    modificacion.setNombre(nombre);
+                    break;
+                    
+                case 2: 
+                    System.out.println("Ingrese nuevo numero: ");
+                    int numero = Leer.nextInt();
+                    //no termine :)
+            }
+        }
     }
 }
