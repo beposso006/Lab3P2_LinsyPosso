@@ -318,7 +318,7 @@ public class Lab3P2_LinsyPosso {
             Pokeball pokeB = listaPokebolas.get(i);
             System.out.println((i) + ". " + pokeB.getColor() + " - Numero de Serie: " + pokeB.getNumserie());            
         }
-        System.out.println("Seleccione el indice de la Pokebola que desea: ");
+        System.out.print("Seleccione el indice de la Pokebola que desea: ");
         int pokeball = Leer.nextInt();
         if (pokeball < 0 || pokeball > listaPokebolas.size()) {
             System.out.println("Opcion invalida");
@@ -368,5 +368,9 @@ public class Lab3P2_LinsyPosso {
         }else{
             System.out.println("Has huido...");
         }
+    }
+    
+    public static void modificaPokemon(){
+        
     }
 }
