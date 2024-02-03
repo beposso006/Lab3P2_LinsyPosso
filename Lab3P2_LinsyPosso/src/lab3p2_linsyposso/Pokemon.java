@@ -12,7 +12,7 @@ public class Pokemon {
     private String nombre;
     private int numPokedex;
     private String naturaleza;
-    private boolean atrapado;
+    protected boolean atrapado;
     Pokeball pokebola;
 
     public Pokemon(String nombre, int numPokedex, String naturaleza) {
@@ -30,6 +30,15 @@ public class Pokemon {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public boolean isAtrapado() {
+        return atrapado;
+    }
+
+    public void setAtrapado(boolean atrapado) {
+        this.atrapado = atrapado;
+    }
+    
     
     
 

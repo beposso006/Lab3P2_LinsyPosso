@@ -5,6 +5,7 @@
 package lab3p2_linsyposso;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -48,6 +49,10 @@ public class Lab3P2_LinsyPosso {
 
                 case 4:
                     eliminarPokemon();
+                    break;
+                    
+                case 5:
+                    capturaPokemon();
                     break;
             }
 
@@ -299,8 +304,63 @@ public class Lab3P2_LinsyPosso {
                     }
                     eliminar = false;
                     break;
-
             }
+        }
+    }
+    
+    public static void capturaPokemon(){
+        System.out.println("--Capturar Pokemon--");
+        if (listaPokebolas.size()==0) {
+            System.out.println("No hay Pokebolas disponibles...");
+        }
+        System.out.print("Elija una Pokebola: ");
+        for (int i = 0; i < listaPokebolas.size(); i++) {
+            Pokeball pokeB = listaPokebolas.get(i);
+            System.out.println((i) + ". " + pokeB.getColor() + " - Numero de Serie: " + pokeB.getNumserie());            
+        }
+        System.out.println("Seleccione el indice de la Pokebola que desea: ");
+        int pokeball = Leer.nextInt();
+        if (pokeball < 0 || pokeball > listaPokebolas.size()) {
+            System.out.println("Opcion invalida");
+        }
+        
+        Pokeball choosePB = listaPokebolas.get(pokeball);
+        boolean captura = false;
+        for (Pokemon pokemon : listaPokemon) {
+            if (!pokemon.atrapado) {
+                captura = true;
+                break;
+            }   
+        }
+        if (!captura) {
+            System.out.println("No hay pokemon disponibles");
+        }
+        Random rand = new Random();
+        Pokemon aparecio = null;
+        for (Pokemon pokemon : listaPokemon) {
+            if (!pokemon.atrapado) {
+                aparecio = pokemon;
+                break;
+            }
+        }
+        System.out.println("El Pokemon " + aparecio.getNombre() + " ha aparecido");
+        System.out.println("Desea capturar o huir (1. Captutar/2.Huir)");
+        int opCaptura = Leer.nextInt();
+        if (opCaptura == 1) {
+            int chance = 0;
+            if (choosePB.getEficienciaAtrapando() == 3) {
+                chance = 100;
+            }else if (choosePB.getEficienciaAtrapando() == 2){
+                chance = 67;
+            }else if (choosePB.getEficienciaAtrapando() == 1){
+                chance = 33;
+            }else{
+                System.out.println("Error...");
+            }
+            if (rand.nextInt(100) < chance) {
+                
+            }
+                
         }
     }
 }
